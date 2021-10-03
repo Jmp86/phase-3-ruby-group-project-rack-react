@@ -2,9 +2,8 @@ class CreateCategories < ActiveRecord::Migration[5.2]
   def change
     create_table :categories do |t|
       t.string :name
-      t.integer :budget_amount
-      t.integer :actual_amount
-      t.timestamp
+      t.float :category_expense
+      t.integer :budget_id
     end
   end
 end

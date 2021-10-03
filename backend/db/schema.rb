@@ -10,17 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_30_061220) do
+ActiveRecord::Schema.define(version: 2021_10_01_074631) do
+
+  create_table "budgets", force: :cascade do |t|
+    t.integer "budget"
+    t.float "total_expense"
+    t.integer "user_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.integer "budget_amount"
-    t.integer "actual_amount"
+    t.float "category_expense"
+    t.integer "budget_id"
   end
 
   create_table "expenses", force: :cascade do |t|
     t.string "description"
-    t.integer "amount"
+    t.float "cost"
     t.integer "user_id"
     t.integer "category_id"
   end
@@ -30,8 +36,6 @@ ActiveRecord::Schema.define(version: 2021_09_30_061220) do
     t.string "password"
     t.string "email"
     t.integer "monthly_income"
-    t.integer "monthly_savings"
-    t.integer "ms_goal"
   end
 
 end

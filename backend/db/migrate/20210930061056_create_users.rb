@@ -4,10 +4,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :username
       t.string :password
       t.string :email
-      t.integer :monthly_income
-      t.integer :monthly_savings
-      t.integer :ms_goal
-      t.timestamp
+      t.integer :monthly_income 
     end
   end
 end
