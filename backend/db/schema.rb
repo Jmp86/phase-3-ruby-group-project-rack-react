@@ -10,18 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_01_074631) do
-
-  create_table "budgets", force: :cascade do |t|
-    t.integer "budget"
-    t.float "total_expense"
-    t.integer "user_id"
-  end
+ActiveRecord::Schema.define(version: 2021_10_04_070203) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.float "category_expense"
-    t.integer "budget_id"
+    t.float "category_budget"
+    t.integer "total_budget"
+    t.integer "user_id"
   end
 
   create_table "expenses", force: :cascade do |t|
@@ -36,6 +32,7 @@ ActiveRecord::Schema.define(version: 2021_10_01_074631) do
     t.string "password"
     t.string "email"
     t.integer "monthly_income"
+    t.boolean "logged_in"
   end
 
 end
