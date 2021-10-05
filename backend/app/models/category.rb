@@ -1,7 +1,6 @@
 class Category < ActiveRecord::Base
-    belongs_to :budget
+    belongs_to :user
     has_many :expenses
-    has_many :users, through: :expenses
 
 
     def update_category_expense

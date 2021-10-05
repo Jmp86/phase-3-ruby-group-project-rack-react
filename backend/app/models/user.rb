@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
     has_many :expenses
-    has_many :budgets
-    has_many :categories, through: :expenses
+    has_many :categories
+   
 
     def update_income(income)
         self.update(monthly_income: income)

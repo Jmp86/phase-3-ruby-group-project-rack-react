@@ -22,9 +22,8 @@ class Application
         return [200, { 'Content-Type' => 'application/json' }, [ user.to_json ]]
       elsif req.env["REQUEST_METHOD"] === 'PATCH'
         input = JSON.parse(req.body.read)
-        user = User.find(input["newIncome"]["user_id"])
-        income = user.update(monthly_income: input["newIncome"]["monthly_income"])
-        # binding.pry
+        user = User.find(input["id"])
+        income = user.update(monthly_income: input["monthly_income"])
         return [200, { 'Content-Type' => 'application/json' }, [ income.to_json ]]        
       end 
     elsif req.path.match(/expenses/) 
@@ -42,7 +41,7 @@ class Application
       end
     elsif req.path.match(/categories/) 
       if req.env["REQUEST_METHOD"] === 'GET'
-        return [200, { 'Content-Type' => 'application/json' }, [ Category.all.to_json({:include => [:expenses, :users]})]]
+        return [200, { 'Content-Type' => 'application/json' }, [ Category.all.to_json({:include => :expenses})]]
       elsif req.env["REQUEST_METHOD"] === 'POST'
         input = JSON.parse(req.body.read)
         category = Category.create(name: input["newBudget"]["name"], category_budget: input["newBudget"]["category_budget"], user_id: input["newBudget"]["user_id"])
